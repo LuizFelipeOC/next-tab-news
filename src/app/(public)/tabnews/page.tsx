@@ -1,5 +1,9 @@
-export default function HomePage() {
+import Header from "@/src/custom-components/header";
 
-    console.log("HomePage");    
-    return <div>Home</div>;
+export default function HomePage() {
+    return (
+        <>
+            <Header />
+        </>
+    )
 }
