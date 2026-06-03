@@ -1,3 +1,4 @@
+import Header from "@/src/custom-components/header";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,5 +12,11 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div>{children}</div>;
+  return (
+    <div>
+      <Header />
+      
+        {children}
+    </div>
+  );
 }
