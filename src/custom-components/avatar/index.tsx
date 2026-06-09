@@ -1,3 +1,4 @@
+import { getAvatarInitials } from "@/src/utils";
 
 export interface AvatarComponentProps { 
     username: string;
@@ -8,7 +9,7 @@ export default function AvatarComponent({ ...props }: AvatarComponentProps) {
         <div className="bg-primary h-[46px] w-[46px] rounded-full items-center justify-center flex text-muted" >
             <span>
                 {props.username && (
-                    props.username
+                    getAvatarInitials(props.username)
                 )}
             </span>
         </div>
