@@ -1,15 +1,24 @@
 'use client';
+
+
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { CATEGORY_FILTER_OPTIONS } from "@/src/constants";
 import { Category } from "@/src/types";
-import { useCallback, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function CaegoriesFilter() {
-    const [selectedCategory, setCategory] = useState<Category | null>(CATEGORY_FILTER_OPTIONS[0]);
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
+    const selectedCategory =
+        searchParams.get("category") ?? CATEGORY_FILTER_OPTIONS[0].value;
+    console.log(selectedCategory)
 
     const setSelectedCategory = (value: Category) => {
-        setCategory(value);
+        router.push(
+            `/tabnews?category=${value.value}`
+        )
     }
 
     return (
@@ -21,7 +30,7 @@ export default function CaegoriesFilter() {
                         variant='outline'
                         className={cn(
                             "cursor-pointer transition-colors",
-                            category?.id === selectedCategory?.id &&
+                            category?.value === selectedCategory &&
                             "bg-primary text-primary-foreground border-primary"
                         )}
                         onClick={() => setSelectedCategory({
