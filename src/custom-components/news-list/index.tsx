@@ -10,7 +10,7 @@ export default function NewsList({ contents }: NewsListProps) {
     return (
         <div className="p-4">
             {
-                contents!.map((noticies: News) => <CardNewsComponent key={noticies.id} username={noticies.owner_username} title={noticies.title} />)
+                contents!.map((news: News) => <CardNewsComponent key={news.id} news={news} />)
             }
         </div>
     )
