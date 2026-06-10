@@ -1,5 +1,5 @@
 import { CategoriesFilterComponente, NewsListComponent } from "@/src/custom-components";
-import { CustomPagination } from "@/src/custom-components/paginations";
+import CustomPagination from "@/src/custom-components/paginations";
 import { News } from "@/src/types";
 import { Suspense } from "react";
 
