@@ -11,7 +11,7 @@ import {
 import { CATEGORY_FILTER_OPTIONS } from "@/src/constants";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export function CustomPagination() {
+export default function CustomPagination() {
     const router = useRouter();
     const searchParams = useSearchParams();
 
