@@ -19,8 +19,6 @@ export default async function HomePage({
     const { category, page } = await searchParams;
     const contents = await getNews(category as string, page);
 
-    console.log(contents)
-
     return (
         <>
             <CategoriesFilterComponente />
