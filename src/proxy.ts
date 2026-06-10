@@ -6,7 +6,7 @@ export function proxy(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
     if (pathname === '/') {
-        return NextResponse.redirect(new URL('/tabnews?category=new', request.url));
+        return NextResponse.redirect(new URL('/tabnews?category=new&page=1', request.url));
     }
 
     const route = WEB_ROUTES.find(
@@ -15,7 +15,7 @@ export function proxy(request: NextRequest) {
 
     if (!route || !route.isPublic) {
         return NextResponse.redirect(
-            new URL('/tabnews?category=new', request.url)
+            new URL('/tabnews?category=new&page=1', request.url)
         );
     }
 

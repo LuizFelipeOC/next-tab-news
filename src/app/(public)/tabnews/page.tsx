@@ -1,9 +1,10 @@
 import { CategoriesFilterComponente, NewsListComponent } from "@/src/custom-components";
+import { CustomPagination } from "@/src/custom-components/paginations";
 import { News } from "@/src/types";
 import { Suspense } from "react";
 
-async function getNews(category: string): Promise<News[]> {
-    const res = await fetch(`https://www.tabnews.com.br/api/v1/contents?strategy=${category}`, {
+async function getNews(category: string, page: number): Promise<News[]> {
+    const res = await fetch(`https://www.tabnews.com.br/api/v1/contents?strategy=${category}&page=${page}`, {
         method: 'GET',
     })
 
@@ -13,10 +14,10 @@ async function getNews(category: string): Promise<News[]> {
 export default async function HomePage({
     searchParams,
 }: {
-    searchParams: Promise<{ category?: string }>;
+    searchParams: Promise<{ category?: string, page: 1 }>;
 }) {
-    const { category } = await searchParams;    
-    const contents = await getNews(category as string);
+    const { category, page } = await searchParams;
+    const contents = await getNews(category as string, page);
 
     console.log(contents)
 
@@ -25,6 +26,7 @@ export default async function HomePage({
             <CategoriesFilterComponente />
 
             <Suspense>
+                <CustomPagination />
                 <NewsListComponent contents={contents} />
             </Suspense>
         </>

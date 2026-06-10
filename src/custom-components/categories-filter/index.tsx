@@ -13,11 +13,10 @@ export default function CaegoriesFilter() {
 
     const selectedCategory =
         searchParams.get("category") ?? CATEGORY_FILTER_OPTIONS[0].value;
-    console.log(selectedCategory)
 
     const setSelectedCategory = (value: Category) => {
         router.push(
-            `/tabnews?category=${value.value}`
+            `/tabnews?category=${value.value}&page=1`
         )
     }
 
